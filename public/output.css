@@ -1,10 +1,10 @@
 /*! tailwindcss v4.1.14 | MIT License | https://tailwindcss.com */
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-sans: "Karla", sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-orange-400: oklch(75% 0.183 55.934);
@@ -27,6 +27,7 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --color-light-coffee: #c89f94;
+    --animate-slide-down: fade-in-scale 0.3s ease-out;
   }
 }
 @layer base {
@@ -178,11 +179,11 @@
   }
 }
 @layer utilities {
+  .relative {
+    position: relative;
+  }
   .mx-2 {
     margin-inline: calc(var(--spacing) * 2);
-  }
-  .mx-10 {
-    margin-inline: calc(var(--spacing) * 10);
   }
   .mx-auto {
     margin-inline: auto;
@@ -192,6 +193,9 @@
   }
   .flex {
     display: flex;
+  }
+  .hidden {
+    display: none;
   }
   .max-w-screen-2xl {
     max-width: var(--breakpoint-2xl);
@@ -208,9 +212,6 @@
   .cursor-pointer {
     cursor: pointer;
   }
-  .flex-row {
-    flex-direction: row;
-  }
   .items-center {
     align-items: center;
   }
@@ -220,26 +221,29 @@
   .justify-end {
     justify-content: flex-end;
   }
-  .justify-start {
-    justify-content: flex-start;
-  }
-  .gap-8 {
-    gap: calc(var(--spacing) * 8);
-  }
   .bg-orange-400 {
     background-color: var(--color-orange-400);
   }
   .bg-slate-200 {
     background-color: var(--color-slate-200);
   }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
-  .py-6 {
-    padding-block: calc(var(--spacing) * 6);
-  }
   .text-center {
     text-align: center;
+  }
+  .font-sans {
+    font-family: var(--font-sans);
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -270,6 +274,51 @@
   .uppercase {
     text-transform: uppercase;
   }
+  .sm\:px-4 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 4);
+    }
+  }
+  .sm\:px-8 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 8);
+    }
+  }
+  .lg\:flex {
+    @media (width >= 64rem) {
+      display: flex;
+    }
+  }
+  .lg\:hidden {
+    @media (width >= 64rem) {
+      display: none;
+    }
+  }
+  .lg\:basis-1\/6 {
+    @media (width >= 64rem) {
+      flex-basis: calc(1/6 * 100%);
+    }
+  }
+  .lg\:items-center {
+    @media (width >= 64rem) {
+      align-items: center;
+    }
+  }
+  .lg\:justify-end {
+    @media (width >= 64rem) {
+      justify-content: flex-end;
+    }
+  }
+  .lg\:justify-start {
+    @media (width >= 64rem) {
+      justify-content: flex-start;
+    }
+  }
+  .lg\:gap-8 {
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 8);
+    }
+  }
 }
 .ct-top-menu-item {
   position: relative;
@@ -279,6 +328,18 @@
       color: var(--color-gray-800);
     }
   }
+}
+.ct-top-menu-item-active {
+  color: var(--color-gray-800);
+}
+.ct-top-menu-item-active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-light-coffee);
+  height: 2px;
+  width: 100%;
 }
 .ct-icon {
   display: inline-block;
@@ -301,13 +362,36 @@
   height: 2px;
   width: 0;
   transition: all 0.3s ease-in-out;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .ct-top-menu-item::after {
+    display: block;
+  }
 }
 .ct-top-menu-item:hover::after {
   width: 100%;
 }
+.ct-top-menu-expanded {
+  position: absolute;
+  top: calc(var(--spacing) * 10);
+  z-index: 999;
+  width: 100%;
+  animation: var(--animate-slide-down);
+  background-color: var(--color-white);
+  text-align: center;
+}
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
+}
+@keyframes fade-in-scale {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {

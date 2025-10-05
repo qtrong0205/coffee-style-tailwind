@@ -1,12 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 @import "tailwindcss";
 
 @theme {
     --color-light-coffee: #c89f94;
+    --font-sans: "Karla", sans-serif;
+
+    --animate-slide-down: fade-in-scale 0.3s ease-out;
+
+    @keyframes fade-in-scale {
+        0% {
+            transform: translateY(-100%);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
 }
 
 /* ct = custom */
 .ct-top-menu-item {
     @apply py-1 hover:text-gray-800 relative;
+}
+
+.ct-top-menu-item-active {
+    @apply text-gray-800
+}
+
+.ct-top-menu-item-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-light-coffee);
+    height: 2px;
+    width: 100%;
 }
 
 .ct-icon {
@@ -26,8 +54,21 @@
     height: 2px;
     width: 0;
     transition: all 0.3s ease-in-out;
+    display: none;
 }
+
+@media (min-width: 1024px) {
+    .ct-top-menu-item::after {
+        display: block;
+        /* Hiện khi >= lg */
+    }
+}
+
 
 .ct-top-menu-item:hover::after {
     width: 100%;
+}
+
+.ct-top-menu-expanded {
+    @apply absolute top-10 z-999 w-full bg-white text-center animate-slide-down
 }

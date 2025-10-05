@@ -10,17 +10,17 @@
 
 <body>
     <div id="root">
-        <div class="content-wrapper max-w-screen-2xl text-base mx-auto px-8 bg-slate-200">
-            <header class="py-6 mx-10">
-                <nav class="flex justify-between items-center">
+        <div class="content-wrapper max-w-screen-2xl text-base mx-auto px-8 bg-slate-200 font-sans">
+            <header class="p-6 mx-auto">
+                <nav class="flex justify-between items-center relative">
                     <div class="logo basis-2/6 text-center text-2xl font-semibold cursor-pointer">Coffeestyle.</div>
-                    <ul
-                        class="flex flex-row justify-end items-center basis-3/6 gap-8 uppercase text-sm text-gray-500 font-medium">
-                        <li class="ct-top-menu-item">
+                    <ul id="ct-top-menu"
+                        class="hidden lg:flex lg:justify-end lg:items-center basis-3/6 lg:gap-8 uppercase text-sm text-gray-500 font-medium ">
+                        <li class="ct-top-menu-item ct-top-menu-item-active">
                             <a href="#!">Home</a>
                         </li>
                         <li class="ct-top-menu-item">
-                            <a href="#!">Our Products</a>
+                            <a href="#!">Products</a>
                         </li>
                         <li class="ct-top-menu-item">
                             <a href="#!">Blog</a>
@@ -36,7 +36,7 @@
                         </li>
                     </ul>
                     <ul
-                        class="basis-1/6 flex justify-start itsems-center ml-16 uppercase text-sm text-gray-500 font-medium">
+                        class="lg:basis-1/6 basis-3/6 flex justify-end lg:justify-start itsems-center ml-16 uppercase text-sm text-gray-500 font-medium">
                         <li class="ct-top-menu-item">
                             <a href="#!" class="flex items-center justify-between">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -49,6 +49,13 @@
                             </a>
                         </li>
                     </ul>
+                    <div class="basis-1/6 lg:hidden cursor-pointer px-3 sm:px-8">
+                        <svg id="ct-top-menu-toggle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="ct-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </div>
                 </nav>
             </header>
             <main>
@@ -80,6 +87,7 @@
             <footer>footer</footer>
         </div> <!-- end content-wrapper -->
     </div><!-- end root -->
+    <script src="./main.js" type="text/javascript" async></script>
 </body>
 
 </html>
