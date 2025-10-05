@@ -1,0 +1,16 @@
+{
+  "name": "tailwind-thucchien",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/output.css --watch"
+  },
+  "keywords": [],
+  "author": "Trong",
+  "license": "ISC",
+  "description": "Tailwind thuc chien",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.14",
+    "tailwindcss": "^4.1.14"
+  }
+}
