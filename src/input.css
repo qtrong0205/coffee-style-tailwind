@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+@theme {
+    --color-light-coffee: #c89f94;
+}
+
+/* ct = custom */
+.ct-top-menu-item {
+    @apply py-1 hover:text-gray-800 relative;
+}
+
+.ct-icon {
+    @apply w-5 h-5 inline-block
+}
+
+.ct-bagde-circle {
+    @apply text-xs text-center rounded-full px-1.5
+}
+
+.ct-top-menu-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-light-coffee);
+    height: 2px;
+    width: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.ct-top-menu-item:hover::after {
+    width: 100%;
+}
